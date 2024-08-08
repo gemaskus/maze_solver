@@ -2,6 +2,7 @@ from graphics import Window
 
 from cell import Cell
 
+
 def main():
     main_window = Window(800, 600)
     # point1 = Point(2, 2)
@@ -27,4 +28,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
