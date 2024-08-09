@@ -12,8 +12,9 @@ class Cell():
         self._y1 = None
         self._y2 = None
         self._win = win
+        self._visited = False
 
-    def draw(self, x1, y1, x2, y2):
+    def draw(self, x1, y1, x2, y2, color=None):
         if self._win is None:
             return
         self._x1 = x1
@@ -30,15 +31,26 @@ class Cell():
         t_line = Line(tl_point, tr_point)
         r_line = Line(tr_point, br_point)
         b_line = Line(bl_point, br_point)
-
+        
         if self.has_left_wall:
             self._win.draw_line(l_line, "black")
+        else:
+            self._win.draw_line(l_line, "#d9d9d9")
         if self.has_top_wall:
             self._win.draw_line(t_line, "black")
+        else:
+            self._win.draw_line(t_line, "#d9d9d9")
         if self.has_right_wall:
             self._win.draw_line(r_line, "black")
+        else:
+            self._win.draw_line(r_line, "#d9d9d9")
         if self.has_bottom_wall:
             self._win.draw_line(b_line, "black")
+        else:
+            self._win.draw_line(b_line, "#d9d9d9")
+            
+
+
 
     def draw_move(self, to_cell, undo=False):
         center_x1 = (self._x1 + self._x2)/2

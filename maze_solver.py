@@ -2,26 +2,21 @@ from graphics import Window
 
 from cell import Cell
 
+from maze import Maze
 
 def main():
     main_window = Window(800, 600)
-    # point1 = Point(2, 2)
-    # point2 = Point(50, 50)
-    # line = Line(point1, point2)
 
-    # main_window.draw_line(line, "black")
+    num_cols = 10
+    num_rows = 10
+    m1 = Maze(10,10,num_rows, num_cols, 50, 50, main_window)
 
-    cell1 = Cell(main_window)
-    cell2 = Cell(main_window)
+    m1._break_entrance_and_exit()
+    m1._break_walls_r(0,0)
 
-    cell1.has_right_wall = False
-    cell2.has_left_wall = False
+    m1._reset_cells_visited()
 
-    cell1.draw(50, 50, 100, 100)
-
-    cell2.draw(100, 50, 150, 100)
-
-    cell1.draw_move(cell2)
+    m1.solve()
 
     main_window.wait_for_close()
 
